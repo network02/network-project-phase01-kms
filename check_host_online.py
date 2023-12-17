@@ -8,6 +8,8 @@ def check_host_online(host, port):
             sock.settimeout(2)
             sock.connect((host, port))
             print(f"Host {host}:{port} is online.")
+            service_name = socket.getservbyport(port)
+            print(f"Service name running on this port: {service_name}")
     except ConnectionRefusedError:
         print(f"Host {host}:{port} is offline.")
     except Exception as e:
